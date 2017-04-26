@@ -202,7 +202,11 @@ var criarCenario = function () {
 
     // Evento do loop
     cenario.beforeRender = function() {
-        //Criar calculo para mover planetas aqui... ainda não sei realizar o calculo
+        planetas.forEach(function (planeta) {
+            planeta.elemento.position.x = planeta.elemento.orbita.raio * Math.sin(planeta.elemento.orbita.angulo);
+            planeta.elemento.position.z = planeta.elemento.orbita.raio * Math.cos(planeta.elemento.orbita.angulo);
+            planeta.elemento.orbita.angulo += planeta.elemento.orbita.velocidade;
+        });
     };
 
     // retornar cenario
